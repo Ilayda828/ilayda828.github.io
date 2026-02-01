@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İlayda İlhan | Computer Engineering Student & Research Enthusiast</title>
-    <meta name="description" content="Computer Engineering student specializing in AI, System Programming, and Full-Stack Development. Passionate about scientific computing and research.">
+    <title>İlayda İlhan | Full Stack & System Developer</title>
+    <meta name="description" content="Computer Engineering student specializing in Full-Stack Development, System Programming, and AI Integration. Building scalable applications and high-performance systems.">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <style>
         * {
             margin: 0;
@@ -35,40 +36,6 @@
             line-height: 1.6;
             background: var(--dark);
             overflow-x: hidden;
-            cursor: none;
-        }
-
-        /* Custom Cursor */
-        .cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--primary);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: all 0.1s ease;
-            transform: translate(-50%, -50%);
-            mix-blend-mode: difference;
-        }
-
-        .cursor-follower {
-            width: 40px;
-            height: 40px;
-            border: 1px solid var(--secondary);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9998;
-            transition: all 0.3s ease;
-            transform: translate(-50%, -50%);
-            mix-blend-mode: difference;
-        }
-
-        .cursor.expand {
-            width: 60px;
-            height: 60px;
-            background: rgba(0, 212, 255, 0.1);
         }
 
         /* Particles Background */
@@ -199,6 +166,31 @@
             width: 100%;
             height: 100%;
             opacity: 0;
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .lang-btn {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            color: var(--gray);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active,
+        .lang-btn:hover {
+            background: var(--primary);
+            color: var(--dark);
+            border-color: var(--primary);
         }
 
         /* Hero Section */
@@ -967,6 +959,70 @@
             transform: translateX(5px);
         }
 
+        .project-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .project-btn {
+            flex: 1;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-btn-primary {
+            background: var(--gradient-1);
+            color: white;
+            border: none;
+        }
+
+        .project-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+        }
+
+        .project-btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .project-btn-secondary:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        .project-screenshot {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .project-screenshot:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .project-screenshots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
         /* Skills Section */
         .skills-grid {
             display: grid;
@@ -1206,6 +1262,78 @@
             line-height: 1.8;
         }
 
+        /* Contact Form */
+        .contact-form-section {
+            background: linear-gradient(135deg, rgba(26, 31, 58, 0.6) 0%, rgba(10, 14, 39, 0.6) 100%);
+            padding: 80px 60px;
+            border-radius: 30px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            backdrop-filter: blur(20px);
+            margin: 60px 0;
+        }
+
+        .contact-form-section h3 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 20px;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-form-section p {
+            text-align: center;
+            color: var(--gray);
+            font-size: 1.1em;
+            margin-bottom: 40px;
+        }
+
+        .contact-methods {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-method {
+            background: rgba(0, 212, 255, 0.05);
+            padding: 25px 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.3s ease;
+            text-align: center;
+            min-width: 200px;
+        }
+
+        .contact-method:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .contact-method i {
+            font-size: 2em;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .contact-method h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .contact-method a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-method a:hover {
+            color: var(--primary);
+        }
+
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -1425,8 +1553,8 @@
 </head>
 <body>
     <!-- Custom Cursor -->
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
+    <div class="cursor" style="display: none;"></div>
+    <div class="cursor-follower" style="display: none;"></div>
 
     <!-- Scroll Progress Bar -->
     <div class="scroll-progress"></div>
@@ -1455,6 +1583,10 @@
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#certificates">Certificates</a></li>
             </ul>
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="tr">TR</button>
+            </div>
         </div>
     </nav>
 
@@ -1462,8 +1594,8 @@
     <div class="hero">
         <div class="hero-content">
             <h1>İLAYDA İLHAN</h1>
-            <p class="subtitle">Computer Engineering Student & Research Enthusiast</p>
-            <p class="tagline">Passionate about advancing scientific computing through innovative software solutions. Specialized in AI systems, distributed computing, and high-performance applications.</p>
+            <p class="subtitle">Computer Engineering Student | Full Stack & System Developer</p>
+            <p class="tagline">Building scalable web applications and high-performance system software. Passionate about AI integration and distributed computing.</p>
             
             <div class="research-interests">
                 <span class="research-tag">Artificial Intelligence</span>
@@ -1622,6 +1754,9 @@
                                 <li>Achieved measurable accuracy improvements using MRR metrics</li>
                             </ul>
                         </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/Ilayda828" class="project-btn project-btn-primary" target="_blank">View Source Code</a>
+                        </div>
                     </div>
                 </div>
 
@@ -1654,6 +1789,23 @@
                                 <li>Built responsive ASP.NET Core MVC application with role-based access control</li>
                             </ul>
                         </div>
+                        <div class="project-highlights">
+                            <h4>System Features:</h4>
+                            <ul>
+                                <li><strong>Multi-Role Authentication:</strong> Separate login portals for customers and employees with role-based dashboards</li>
+                                <li><strong>Customer Management:</strong> Personal info management, profile viewing, and account security settings</li>
+                                <li><strong>Admin Panel:</strong> Customer CRUD operations, invoice management, inventory tracking, and comprehensive reporting</li>
+                                <li><strong>Real-time Analytics:</strong> Customer reports, sales analytics, and stock monitoring system</li>
+                            </ul>
+                        </div>
+                        <div class="project-screenshots">
+                            <img src="db-login.jpg" alt="Access Portal - Multi-role Login System" class="project-screenshot" onerror="this.style.display='none'">
+                            <img src="db-customer.jpg" alt="Customer Dashboard Interface" class="project-screenshot" onerror="this.style.display='none'">
+                            <img src="db-admin.jpg" alt="Admin Control Panel" class="project-screenshot" onerror="this.style.display='none'">
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/Ilayda828" class="project-btn project-btn-primary" target="_blank">View Source Code</a>
+                        </div>
                     </div>
                 </div>
 
@@ -1685,6 +1837,9 @@
                                 <li><strong>Bash Automation:</strong> System administration scripts for file operations and text processing</li>
                             </ul>
                         </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/Ilayda828" class="project-btn project-btn-primary" target="_blank">View Source Code</a>
+                        </div>
                     </div>
                 </div>
 
@@ -1715,6 +1870,9 @@
                                 <li>Detailed performance metrics and statistics reporting</li>
                             </ul>
                         </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/Ilayda828" class="project-btn project-btn-primary" target="_blank">View Source Code</a>
+                        </div>
                     </div>
                 </div>
 
@@ -1744,6 +1902,9 @@
                                 <li>Debugger usage and breakpoint analysis</li>
                                 <li>Understanding of calling conventions and stack frames</li>
                             </ul>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/Ilayda828" class="project-btn project-btn-primary" target="_blank">View Source Code</a>
                         </div>
                     </div>
                 </div>
@@ -1776,6 +1937,9 @@
                                 <li>Pipeline stages with hazard detection</li>
                             </ul>
                         </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/Ilayda828" class="project-btn project-btn-primary" target="_blank">View Source Code</a>
+                        </div>
                     </div>
                 </div>
 
@@ -1805,6 +1969,9 @@
                                 <li>Greedy heuristics with local search</li>
                                 <li>Comparative analysis of time-space tradeoffs</li>
                             </ul>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/Ilayda828" class="project-btn project-btn-primary" target="_blank">View Source Code</a>
                         </div>
                     </div>
                 </div>
@@ -1836,6 +2003,9 @@
                                 <li>Statistical validation of simulation results</li>
                             </ul>
                         </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/Ilayda828" class="project-btn project-btn-primary" target="_blank">View Source Code</a>
+                        </div>
                     </div>
                 </div>
 
@@ -1866,6 +2036,9 @@
                                 <li>Inference rules and unification (Prolog)</li>
                             </ul>
                         </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/Ilayda828" class="project-btn project-btn-primary" target="_blank">View Source Code</a>
+                        </div>
                     </div>
                 </div>
 
@@ -1881,23 +2054,36 @@
 
             <div class="skills-grid">
                 <div class="skill-category fade-in">
-                    <div class="skill-icon">💻</div>
+                    <div class="skill-icon"><i class="devicon-java-plain colored"></i></div>
                     <h3>Programming Languages</h3>
                     <div class="skill-tags">
-                        <span class="tag">Java</span>
-                        <span class="tag">C</span>
-                        <span class="tag">Python</span>
-                        <span class="tag">C#</span>
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">Bash</span>
+                        <span class="tag"><i class="devicon-java-plain"></i> Java</span>
+                        <span class="tag"><i class="devicon-c-plain"></i> C</span>
+                        <span class="tag"><i class="devicon-python-plain"></i> Python</span>
+                        <span class="tag"><i class="devicon-csharp-plain"></i> C#</span>
+                        <span class="tag"><i class="devicon-javascript-plain"></i> JavaScript</span>
+                        <span class="tag"><i class="devicon-bash-plain"></i> Bash</span>
                         <span class="tag">Assembly (x86-64)</span>
                         <span class="tag">Verilog</span>
-                        <span class="tag">Haskell</span>
+                        <span class="tag"><i class="devicon-haskell-plain"></i> Haskell</span>
                         <span class="tag">Prolog</span>
                     </div>
                 </div>
 
                 <div class="skill-category fade-in">
+                    <div class="skill-icon"><i class="devicon-html5-plain colored"></i></div>
+                    <h3>Web & Database Technologies</h3>
+                    <div class="skill-tags">
+                        <span class="tag"><i class="devicon-dotnetcore-plain"></i> ASP.NET Core</span>
+                        <span class="tag"><i class="devicon-microsoftsqlserver-plain"></i> MSSQL / T-SQL</span>
+                        <span class="tag"><i class="devicon-html5-plain"></i> HTML5</span>
+                        <span class="tag"><i class="devicon-css3-plain"></i> CSS3</span>
+                        <span class="tag">RESTful APIs</span>
+                        <span class="tag">JSON / XML</span>
+                        <span class="tag">Swagger / OpenAPI</span>
+                        <span class="tag">Postman</span>
+                    </div>
+                </div>
                     <div class="skill-icon">🌐</div>
                     <h3>Web & Database Technologies</h3>
                     <div class="skill-tags">
@@ -1912,7 +2098,7 @@
                 </div>
 
                 <div class="skill-category fade-in">
-                    <div class="skill-icon">🏗️</div>
+                    <div class="skill-icon"><i class="devicon-react-original colored"></i></div>
                     <h3>Software Engineering</h3>
                     <div class="skill-tags">
                         <span class="tag">OOP / SOLID</span>
@@ -1925,19 +2111,19 @@
                 </div>
 
                 <div class="skill-category fade-in">
-                    <div class="skill-icon">🧪</div>
+                    <div class="skill-icon"><i class="devicon-pytest-plain colored"></i></div>
                     <h3>Testing & Quality Assurance</h3>
                     <div class="skill-tags">
                         <span class="tag">Unit Testing</span>
                         <span class="tag">Integration Testing</span>
                         <span class="tag">API Testing</span>
-                        <span class="tag">JUnit / pytest</span>
+                        <span class="tag"><i class="devicon-junit-plain"></i> JUnit / pytest</span>
                         <span class="tag">Test Automation</span>
                     </div>
                 </div>
 
                 <div class="skill-category fade-in">
-                    <div class="skill-icon">🤖</div>
+                    <div class="skill-icon"><i class="devicon-tensorflow-original colored"></i></div>
                     <h3>AI & Machine Learning</h3>
                     <div class="skill-tags">
                         <span class="tag">NLP</span>
@@ -1950,7 +2136,7 @@
                 </div>
 
                 <div class="skill-category fade-in">
-                    <div class="skill-icon">⚙️</div>
+                    <div class="skill-icon"><i class="devicon-linux-plain colored"></i></div>
                     <h3>System Programming</h3>
                     <div class="skill-tags">
                         <span class="tag">POSIX APIs</span>
@@ -1963,15 +2149,15 @@
                 </div>
 
                 <div class="skill-category fade-in">
-                    <div class="skill-icon">🛠️</div>
+                    <div class="skill-icon"><i class="devicon-git-plain colored"></i></div>
                     <h3>Development Tools</h3>
                     <div class="skill-tags">
-                        <span class="tag">Git / GitHub</span>
+                        <span class="tag"><i class="devicon-git-plain"></i> Git / GitHub</span>
                         <span class="tag">GDB</span>
-                        <span class="tag">Linux CLI</span>
-                        <span class="tag">VS Code</span>
-                        <span class="tag">IntelliJ IDEA</span>
-                        <span class="tag">Docker</span>
+                        <span class="tag"><i class="devicon-linux-plain"></i> Linux CLI</span>
+                        <span class="tag"><i class="devicon-vscode-plain"></i> VS Code</span>
+                        <span class="tag"><i class="devicon-intellij-plain"></i> IntelliJ IDEA</span>
+                        <span class="tag"><i class="devicon-docker-plain"></i> Docker</span>
                     </div>
                 </div>
 
@@ -1979,7 +2165,7 @@
                     <div class="skill-icon">🔬</div>
                     <h3>Specialized Tools</h3>
                     <div class="skill-tags">
-                        <span class="tag">MATLAB</span>
+                        <span class="tag"><i class="devicon-matlab-plain"></i> MATLAB</span>
                         <span class="tag">Logisim</span>
                         <span class="tag">AnyLogic</span>
                         <span class="tag">Wireshark</span>
@@ -2065,6 +2251,31 @@
 
     </div>
 
+    <!-- Contact Form Section -->
+    <div class="container">
+        <div class="contact-form-section">
+            <h3>Get In Touch</h3>
+            <p>Interested in collaborating or have questions? I'd love to hear from you!</p>
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <i>📧</i>
+                    <h4>Email</h4>
+                    <a href="mailto:ilayda.ilhan0@gmail.com">ilayda.ilhan0@gmail.com</a>
+                </div>
+                <div class="contact-method">
+                    <i>💼</i>
+                    <h4>LinkedIn</h4>
+                    <a href="https://linkedin.com/in/ilayda-ilhan8b1451284" target="_blank">Connect with me</a>
+                </div>
+                <div class="contact-method">
+                    <i>💻</i>
+                    <h4>GitHub</h4>
+                    <a href="https://github.com/Ilayda828" target="_blank">View my projects</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="footer-content">
@@ -2125,34 +2336,69 @@
             });
         }
 
-        // Custom Cursor
-        if (window.innerWidth > 768) {
-            const cursor = document.querySelector('.cursor');
-            const cursorFollower = document.querySelector('.cursor-follower');
+        // Language Switcher
+        const langButtons = document.querySelectorAll('.lang-btn');
+        let currentLang = 'en';
 
-            let mouseX = 0, mouseY = 0;
-            let followerX = 0, followerY = 0;
+        const translations = {
+            en: {
+                nav: ['About', 'Experience', 'Projects', 'Skills', 'Certificates'],
+                hero: {
+                    title: 'İLAYDA İLHAN',
+                    subtitle: 'Computer Engineering Student | Full Stack & System Developer',
+                    tagline: 'Building scalable web applications and high-performance system software. Passionate about AI integration and distributed computing.'
+                },
+                buttons: {
+                    viewProjects: 'View Research & Projects',
+                    github: 'GitHub Profile',
+                    viewSource: 'View Source Code'
+                }
+            },
+            tr: {
+                nav: ['Hakkımda', 'Deneyim', 'Projeler', 'Yetenekler', 'Sertifikalar'],
+                hero: {
+                    title: 'İLAYDA İLHAN',
+                    subtitle: 'Bilgisayar Mühendisliği Öğrencisi | Full Stack & Sistem Geliştiricisi',
+                    tagline: 'Ölçeklenebilir web uygulamaları ve yüksek performanslı sistem yazılımları geliştiriyorum. AI entegrasyonu ve dağıtık sistemlere tutkuyla bağlıyım.'
+                },
+                buttons: {
+                    viewProjects: 'Araştırma ve Projelerim',
+                    github: 'GitHub Profilim',
+                    viewSource: 'Kaynak Kodu Görüntüle'
+                }
+            }
+        };
 
-            document.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-                cursor.style.left = mouseX + 'px';
-                cursor.style.top = mouseY + 'px';
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                langButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentLang = btn.dataset.lang;
+                updateLanguage();
+            });
+        });
+
+        function updateLanguage() {
+            const t = translations[currentLang];
+            
+            // Update navigation
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach((link, i) => {
+                if (i < t.nav.length) link.textContent = t.nav[i];
             });
 
-            function animateFollower() {
-                followerX += (mouseX - followerX) * 0.1;
-                followerY += (mouseY - followerY) * 0.1;
-                cursorFollower.style.left = followerX + 'px';
-                cursorFollower.style.top = followerY + 'px';
-                requestAnimationFrame(animateFollower);
-            }
-            animateFollower();
+            // Update hero section
+            document.querySelector('.hero .subtitle').textContent = t.hero.subtitle;
+            document.querySelector('.hero .tagline').textContent = t.hero.tagline;
 
-            // Expand cursor on hover
-            document.querySelectorAll('a, button, .btn, .project-card, .skill-category').forEach(el => {
-                el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
-                el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
+            // Update buttons
+            const ctaButtons = document.querySelectorAll('.cta-buttons .btn');
+            if (ctaButtons[0]) ctaButtons[0].textContent = t.buttons.viewProjects;
+            if (ctaButtons[1]) ctaButtons[1].textContent = t.buttons.github;
+
+            // Update project buttons
+            document.querySelectorAll('.project-btn-primary').forEach(btn => {
+                btn.textContent = t.buttons.viewSource;
             });
         }
 
@@ -2328,7 +2574,8 @@
         console.log('%c👋 Hello, Tech Recruiter!', 'color: #00d4ff; font-size: 24px; font-weight: bold;');
         console.log('%cLooking for a passionate Computer Engineering student?', 'color: #00ff88; font-size: 16px;');
         console.log('%cLet\'s connect: ilayda.ilhan0@gmail.com', 'color: #8b5cf6; font-size: 14px;');
-        console.log('%c🚀 This website features: Particles.js, Custom Cursor, Smooth Animations, and Modern Design!', 'color: #ff006e; font-size: 12px;');
+        console.log('%c🚀 This website features: Particles.js, Smooth Animations, Modern Design, and Devicon!', 'color: #ff006e; font-size: 12px;');
+        console.log('%c💡 Pro Tip: Check out my GitHub repos - they have detailed README files!', 'color: #00d4ff; font-size: 12px;');
     </script>
 
 </body>
