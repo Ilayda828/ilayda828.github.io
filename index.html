@@ -7,6 +7,7 @@
     <meta name="description" content="Computer Engineering student specializing in Full-Stack Development, System Programming, and AI Integration. Building scalable applications and high-performance systems.">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="portfolio-styles-addon.css">
     <style>
         * {
             margin: 0;
@@ -1693,26 +1694,7 @@
             </div>
 
             <div class="timeline">
-                <div class="timeline-item fade-in">
-                    <div class="job-header">
-                        <div>
-                            <div class="job-title">Computer Engineering Intern</div>
-                            <div class="company">Digital Garden Technology</div>
-                        </div>
-                        <div class="date">July 2025 - August 2025</div>
-                    </div>
-                    <ul>
-                        <li><strong>API Architecture & Security:</strong> Conducted comprehensive API testing using industry-standard tools (Swagger, Postman). Implemented and validated JWT-based authentication systems to ensure secure data transmission across distributed services. Developed automated testing suites for RESTful APIs.</li>
-                        
-                        <li><strong>Cross-Platform Development Research:</strong> Led research initiative on browser extension architecture and implementation. Developed functional prototypes using HTML5, CSS3, and modern JavaScript (ES6+). Investigated cross-platform compatibility challenges and solutions.</li>
-                        
-                        <li><strong>Mobile Integration R&D:</strong> Conducted feasibility analysis for mobile platform integration using Swift (iOS) and Kotlin (Android). Evaluated architectural patterns for cross-platform code sharing and platform-specific optimizations. Prepared technical documentation for mobile development roadmap.</li>
-                        
-                        <li><strong>Software Engineering Best Practices:</strong> Implemented core application components in Java following SOLID principles and Gang of Four design patterns. Participated in code reviews focusing on maintainability, scalability, and performance optimization.</li>
-                        
-                        <li><strong>Agile Development Methodology:</strong> Actively contributed to Scrum ceremonies including sprint planning, daily standups, retrospectives, and demos. Managed tasks using Jira and collaborated with cross-functional teams to deliver features within sprint commitments.</li>
-                    </ul>
-                </div>
+                <!-- Timeline items will be dynamically generated from data.js -->
             </div>
         </section>
 
@@ -2169,69 +2151,7 @@
             </div>
 
             <div class="certificates-grid">
-                <div class="certificate-item fade-in">
-                    <div class="cert-content">
-                        <div class="cert-title">Borusan Technology School</div>
-                        <div class="cert-org">Toptalent.co - Corporate Technology Training</div>
-                    </div>
-                    <div class="cert-date">May 2025</div>
-                </div>
-
-                <div class="certificate-item fade-in">
-                    <div class="cert-content">
-                        <div class="cert-title">İşbank ProSchool - Data & AI Class</div>
-                        <div class="cert-org">Toptalent.co - Advanced AI & Data Science</div>
-                    </div>
-                    <div class="cert-date">May 2025</div>
-                </div>
-
-                <div class="certificate-item fade-in">
-                    <div class="cert-content">
-                        <div class="cert-title">İşbank ProSchool - IT Class</div>
-                        <div class="cert-org">Toptalent.co - Enterprise IT Systems</div>
-                    </div>
-                    <div class="cert-date">May 2025</div>
-                </div>
-
-                <div class="certificate-item fade-in">
-                    <div class="cert-content">
-                        <div class="cert-title">Eczacıbaşı Future School</div>
-                        <div class="cert-org">Toptalent.co - Innovation & Technology</div>
-                    </div>
-                    <div class="cert-date">Feb 2025</div>
-                </div>
-
-                <div class="certificate-item fade-in">
-                    <div class="cert-content">
-                        <div class="cert-title">IoT & Security Fundamentals</div>
-                        <div class="cert-org">BTK Academy - Cybersecurity Training</div>
-                    </div>
-                    <div class="cert-date">Feb 2025</div>
-                </div>
-
-                <div class="certificate-item fade-in">
-                    <div class="cert-content">
-                        <div class="cert-title">AWS Cloud Computing</div>
-                        <div class="cert-org">BTK Academy - Cloud Infrastructure</div>
-                    </div>
-                    <div class="cert-date">July 2025</div>
-                </div>
-
-                <div class="certificate-item fade-in">
-                    <div class="cert-content">
-                        <div class="cert-title">Web Programming (HTML5, CSS3, JavaScript)</div>
-                        <div class="cert-org">Turkcell Future Coders Program</div>
-                    </div>
-                    <div class="cert-date">Aug 2025</div>
-                </div>
-
-                <div class="certificate-item fade-in">
-                    <div class="cert-content">
-                        <div class="cert-title">Boğaziçi DataCamp'22 - Data Science Summit</div>
-                        <div class="cert-org">Boğaziçi University Computer Engineering</div>
-                    </div>
-                    <div class="cert-date">Mar 2023</div>
-                </div>
+                <!-- Certificate items will be dynamically generated from data.js -->
             </div>
         </section>
 
@@ -2457,6 +2377,11 @@
             // Update footer
             const footerTagline = document.querySelector('.footer-tagline');
             if (footerTagline) footerTagline.innerHTML = t.footer.tagline;
+
+            // Dinamik içeriği de güncelle (portfolioManager ile entegrasyon)
+            if (window.portfolioManager) {
+                window.portfolioManager.setLanguage(currentLang);
+            }
         }
 
         // Scroll Progress Bar
@@ -2634,6 +2559,10 @@
         console.log('%c🚀 This website features: Particles.js, Smooth Animations, Modern Design, and Devicon!', 'color: #ff006e; font-size: 12px;');
         console.log('%c💡 Pro Tip: Check out my GitHub repos - they have detailed README files!', 'color: #00d4ff; font-size: 12px;');
     </script>
+
+    <!-- Data-Driven Architecture -->
+    <script src="data.js"></script>
+    <script src="portfolio-manager.js"></script>
 
 </body>
 </html>
