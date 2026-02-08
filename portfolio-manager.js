@@ -1,6 +1,8 @@
 // ===============================================
 // PORTFOLYO DİNAMİK İÇERİK YÖNETİMİ
 // ===============================================
+// NOT: Bu sürümde sadece Modal ve Admin Panel özellikleri aktif
+// İçerik (experiences, certificates, projects) HTML'de statik kalıyor
 
 class PortfolioManager {
     constructor() {
@@ -10,156 +12,34 @@ class PortfolioManager {
     }
 
     init() {
-        // Sayfa yüklendiğinde içeriği render et
+        // Sayfa yüklendiğinde sadece modal ve admin paneli başlat
         document.addEventListener('DOMContentLoaded', () => {
-            this.renderExperiences();
-            this.renderCertificates();
-            this.renderProjects();
+            this.setupCertificateClickHandlers(); // Mevcut HTML sertifikalara tıklama özelliği ekle
             this.setupModal();
             this.checkAdminMode();
         });
     }
 
-    // ============ DENEYİMLERİ RENDER ET ============
-    renderExperiences() {
-        const container = document.querySelector('.timeline');
-        if (!container || !this.data.experiences) return;
-
-        container.innerHTML = ''; // Mevcut içeriği temizle
-
-        this.data.experiences.forEach(exp => {
-            const experienceHTML = this.createExperienceCard(exp);
-            container.innerHTML += experienceHTML;
+    // ============ SERTİFİKA TIKLAMA ÖZELLİĞİ ============
+    setupCertificateClickHandlers() {
+        // Mevcut HTML'deki tüm certificate-item'lara tıklama ekle
+        const certItems = document.querySelectorAll('.certificate-item');
+        certItems.forEach((item, index) => {
+            // Her sertifika için görüntüle butonu ekle
+            const certContent = item.querySelector('.cert-content');
+            if (certContent && this.data.certificates && this.data.certificates[index]) {
+                const cert = this.data.certificates[index];
+                if (cert.image || cert.pdfLink) {
+                    const viewBtnText = this.currentLang === 'tr' ? 'Sertifikayı Görüntüle' : 'View Certificate';
+                    const btn = document.createElement('button');
+                    btn.className = 'cert-view-btn';
+                    btn.innerHTML = `📄 ${viewBtnText}`;
+                    btn.dataset.certId = cert.id;
+                    btn.addEventListener('click', () => this.openCertificateModal(cert.id));
+                    certContent.appendChild(btn);
+                }
+            }
         });
-    }
-
-    createExperienceCard(exp) {
-        const title = this.currentLang === 'tr' ? (exp.titleTR || exp.title) : exp.title;
-        const date = this.currentLang === 'tr' ? (exp.dateTR || exp.date) : exp.date;
-        
-        const achievementsHTML = exp.achievements.map(achievement => {
-            const text = this.currentLang === 'tr' ? achievement.tr : achievement.en;
-            return `<li>${text}</li>`;
-        }).join('');
-
-        return `
-            <div class="timeline-item fade-in" data-id="${exp.id}">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">${title}</div>
-                        <div class="company">${exp.company}</div>
-                    </div>
-                    <div class="date">${date}</div>
-                </div>
-                <ul>
-                    ${achievementsHTML}
-                </ul>
-            </div>
-        `;
-    }
-
-    // ============ SERTİFİKALARI RENDER ET ============
-    renderCertificates() {
-        const container = document.querySelector('.certificates-grid');
-        if (!container || !this.data.certificates) return;
-
-        container.innerHTML = ''; // Mevcut içeriği temizle
-
-        this.data.certificates.forEach(cert => {
-            const certificateHTML = this.createCertificateCard(cert);
-            container.innerHTML += certificateHTML;
-        });
-
-        // Sertifika butonlarına event listener ekle
-        this.setupCertificateButtons();
-    }
-
-    createCertificateCard(cert) {
-        const title = this.currentLang === 'tr' ? (cert.titleTR || cert.title) : cert.title;
-        const org = this.currentLang === 'tr' ? (cert.organizationTR || cert.organization) : cert.organization;
-        const date = this.currentLang === 'tr' ? (cert.dateTR || cert.date) : cert.date;
-        const viewBtnText = this.currentLang === 'tr' ? 'Sertifikayı Görüntüle' : 'View Certificate';
-
-        return `
-            <div class="certificate-item fade-in" data-id="${cert.id}">
-                <div class="cert-content">
-                    <div class="cert-title">${title}</div>
-                    <div class="cert-org">${org}</div>
-                    ${cert.image || cert.pdfLink ? `
-                        <button class="cert-view-btn" data-cert-id="${cert.id}">
-                            📄 ${viewBtnText}
-                        </button>
-                    ` : ''}
-                </div>
-                <div class="cert-date">${date}</div>
-            </div>
-        `;
-    }
-
-    // ============ PROJELERİ RENDER ET ============
-    renderProjects() {
-        const container = document.querySelector('.projects-grid');
-        if (!container || !this.data.projects) return;
-
-        container.innerHTML = ''; // Mevcut içeriği temizle
-
-        this.data.projects.forEach(proj => {
-            const projectHTML = this.createProjectCard(proj);
-            container.innerHTML += projectHTML;
-        });
-    }
-
-    createProjectCard(proj) {
-        const title = this.currentLang === 'tr' ? (proj.titleTR || proj.title) : proj.title;
-        const type = this.currentLang === 'tr' ? (proj.typeTR || proj.type) : proj.type;
-        const year = this.currentLang === 'tr' ? (proj.yearTR || proj.year) : proj.year;
-        const course = this.currentLang === 'tr' ? (proj.courseTR || proj.course) : proj.course;
-        const description = this.currentLang === 'tr' ? proj.description.tr : proj.description.en;
-        const highlightsTitle = this.currentLang === 'tr' ? proj.highlights.title.tr : proj.highlights.title.en;
-        const sourceBtnText = this.currentLang === 'tr' ? 'Kaynak Kodunu Görüntüle' : 'View Source Code';
-        
-        const tagsHTML = proj.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('');
-        const highlightsHTML = proj.highlights.items.map(item => {
-            const text = this.currentLang === 'tr' ? item.tr : item.en;
-            return `<li>${text}</li>`;
-        }).join('');
-
-        return `
-            <div class="project-card fade-in" data-id="${proj.id}">
-                <div class="project-header">
-                    <div class="project-meta">
-                        <span class="project-type">${type}</span>
-                        <span class="project-year">${year}</span>
-                    </div>
-                    <h3 class="project-title">${title}</h3>
-                    ${course ? `<p class="project-course">${course}</p>` : ''}
-                </div>
-                <div class="project-body">
-                    <div class="project-tags">
-                        ${tagsHTML}
-                    </div>
-                    <div class="project-description">
-                        ${description}
-                    </div>
-                    <div class="project-highlights">
-                        <h4>${highlightsTitle}</h4>
-                        <ul>
-                            ${highlightsHTML}
-                        </ul>
-                    </div>
-                </div>
-                ${proj.github ? `
-                    <div class="project-footer">
-                        <a href="${proj.github}" target="_blank" class="project-btn">
-                            <svg viewBox="0 0 24 24" width="18" height="18">
-                                <path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
-                            ${sourceBtnText}
-                        </a>
-                    </div>
-                ` : ''}
-            </div>
-        `;
     }
 
     // ============ MODAL YÖNETİMİ ============
@@ -188,7 +68,10 @@ class PortfolioManager {
         const modal = document.getElementById('certificate-modal');
         const closeBtn = document.querySelector('.cert-modal-close');
 
-        closeBtn.onclick = () => this.closeModal();
+        if (closeBtn) {
+            closeBtn.onclick = () => this.closeModal();
+        }
+        
         window.onclick = (e) => {
             if (e.target === modal) this.closeModal();
         };
@@ -480,12 +363,15 @@ ${achievementsArray}
 },`;
     }
 
-    // Dil değiştirme için
+    // Dil değiştirme için (şu an sadece buton dili günceller)
     setLanguage(lang) {
         this.currentLang = lang;
-        this.renderExperiences();
-        this.renderCertificates();
-        this.renderProjects();
+        // Sertifika butonlarının dilini güncelle
+        const certBtns = document.querySelectorAll('.cert-view-btn');
+        const btnText = lang === 'tr' ? 'Sertifikayı Görüntüle' : 'View Certificate';
+        certBtns.forEach(btn => {
+            btn.innerHTML = `📄 ${btnText}`;
+        });
     }
 }
 
