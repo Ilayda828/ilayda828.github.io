@@ -136,6 +136,18 @@ const portfolioData = {
             pdfLink: '',
             category: 'data-science'
         }
+        {
+    id: 'cert-1770638810510',
+    title: 'An introduction to generative artificial intelligence',
+    titleTR: 'Üretken Yapay Zekaya Giriş',
+    organization: 'BTK Academy',
+    organizationTR: 'BTK Akademi',
+    date: 'Feb 2026',
+    dateTR: 'Şubat 2026',
+    image: 'file:///Users/ilayda/Downloads/%C3%9Cretken_Yapay_Zek%C3%A2ya_Giri%C5%9F_Sertifika.pdf',
+    pdfLink: '',
+    category: 'ai'
+},
     ],
 
     // ============ PROJELER ============
