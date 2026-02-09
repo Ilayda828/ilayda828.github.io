@@ -135,7 +135,7 @@ const portfolioData = {
             image: '',
             pdfLink: '',
             category: 'data-science'
-        }
+        },
         {
             id: 'cert-9',
             title: 'An introduction to generative artificial intelligence',
