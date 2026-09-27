@@ -5,6 +5,6 @@ Marmara Üniversitesi Bilgisayar Mühendisliği lisans sürecim boyunca gelişti
 ---
 
 ### 🌐 Canlı Web Sitesi / Live Demo
-Portfolyoyu doğrudan tarayıcınızda incelemek ve interaktif kariyer asansörü simülasyonunu deneyimlemek için aşağıdaki bağlantıya tıklayın:
+Portfolyoyu doğrudan tarayıcınızda incelemek için aşağıdaki bağlantıya tıklayın:
 
 👉 **[https://ilayda828.github.io/](https://ilayda828.github.io/)** 👈
